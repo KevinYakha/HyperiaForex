@@ -1,9 +1,18 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 public struct CurrencyAmount
 {
     private decimal amount;
     private string currency;
+    public static CurrencyAmount operator +(CurrencyAmount lhs,  CurrencyAmount rhs)
+    {
+        return new CurrencyAmount(lhs.amount + rhs.amount, lhs.currency == rhs.currency ? lhs.currency : throw new ArgumentException());
+    }
+    public static CurrencyAmount operator -(CurrencyAmount lhs, CurrencyAmount rhs)
+    {
+        return new CurrencyAmount(lhs.amount - rhs.amount, lhs.currency == rhs.currency ? lhs.currency : throw new ArgumentException());
+    }
 
     public CurrencyAmount(decimal amount, string currency)
     {
