@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using System;
 using System.Security.Cryptography.X509Certificates;
 
@@ -20,6 +21,15 @@ public struct CurrencyAmount
     public static CurrencyAmount operator /(CurrencyAmount lhs, decimal rhs)
     {
         return new CurrencyAmount(lhs.amount / rhs, lhs.currency);
+    }
+
+    public static explicit operator double(CurrencyAmount convert)
+    {
+        return (double)convert.amount;
+    }
+    public static implicit operator decimal(CurrencyAmount convert)
+    {
+        return convert.amount;
     }
 
     public CurrencyAmount(decimal amount, string currency)
