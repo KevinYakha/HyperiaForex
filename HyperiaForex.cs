@@ -1,3 +1,5 @@
+using System;
+
 public struct CurrencyAmount
 {
     private decimal amount;
@@ -18,7 +20,14 @@ public struct CurrencyAmount
         return !(lhs == rhs);
     }
 
-    // TODO: implement comparison operators
+    public static bool operator <(CurrencyAmount lhs, CurrencyAmount rhs)
+    {
+        return lhs.amount < rhs.amount && lhs.currency == rhs.currency ? true : throw new ArgumentException();
+    }
+    public static bool operator >(CurrencyAmount lhs, CurrencyAmount rhs)
+    {
+        return lhs.amount > rhs.amount && lhs.currency == rhs.currency ? true : throw new ArgumentException();
+    }
 
     // TODO: implement arithmetic operators
 
