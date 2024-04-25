@@ -9,7 +9,14 @@ public struct CurrencyAmount
         this.currency = currency;
     }
 
-    // TODO: implement equality operators
+    public static bool operator ==(CurrencyAmount lhs, CurrencyAmount rhs)
+    {
+        return lhs.amount == rhs.amount && lhs.currency == rhs.currency;
+    }
+    public static bool operator !=(CurrencyAmount lhs, CurrencyAmount rhs)
+    {
+        return !(lhs == rhs);
+    }
 
     // TODO: implement comparison operators
 
