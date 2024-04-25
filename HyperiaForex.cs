@@ -40,7 +40,7 @@ public struct CurrencyAmount
 
     public static bool operator ==(CurrencyAmount lhs, CurrencyAmount rhs)
     {
-        return lhs.amount == rhs.amount && lhs.currency == rhs.currency;
+        return lhs.currency == rhs.currency ? lhs.amount == rhs.amount : throw new ArgumentException();
     }
     public static bool operator !=(CurrencyAmount lhs, CurrencyAmount rhs)
     {
@@ -55,8 +55,4 @@ public struct CurrencyAmount
     {
         return lhs.amount > rhs.amount && lhs.currency == rhs.currency ? true : throw new ArgumentException();
     }
-
-    // TODO: implement arithmetic operators
-
-    // TODO: implement type conversion operators
 }
