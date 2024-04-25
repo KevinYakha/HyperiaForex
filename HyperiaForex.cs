@@ -13,6 +13,14 @@ public struct CurrencyAmount
     {
         return new CurrencyAmount(lhs.amount - rhs.amount, lhs.currency == rhs.currency ? lhs.currency : throw new ArgumentException());
     }
+    public static CurrencyAmount operator *(CurrencyAmount lhs, decimal rhs)
+    {
+        return new CurrencyAmount(lhs.amount * rhs, lhs.currency);
+    }
+    public static CurrencyAmount operator /(CurrencyAmount lhs, decimal rhs)
+    {
+        return new CurrencyAmount(lhs.amount / rhs, lhs.currency);
+    }
 
     public CurrencyAmount(decimal amount, string currency)
     {
